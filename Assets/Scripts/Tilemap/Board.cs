@@ -8,10 +8,29 @@ public class Board : MonoBehaviour
 
     //TODO: make it singleton
 
+    private static Board _instance;
+
     public Dictionary<TileBase, List<Vector2Int>> walls = new Dictionary<TileBase, List<Vector2Int>>();
     public List<TileBase> tiles = new List<TileBase>();
     public BoundsInt boardBounds;
     private Tilemap _tilemap;
+
+    public static Board Instance
+    {
+        get
+        {
+            if (_instance == null)
+                Debug.LogError("No Board Instance");
+        
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
     void Start()
     {
         _tilemap = GetComponent<Tilemap>();
@@ -40,7 +59,7 @@ public class Board : MonoBehaviour
         walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.down, Vector2Int.right, Vector2Int.up });
         walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.down, Vector2Int.left, Vector2Int.right });
 
-        walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.down, Vector2Int.left, Vector2Int.right , Vector2Int.up });
+        walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.down, Vector2Int.left, Vector2Int.right, Vector2Int.up });
     }
 
     private void DebugWallsOfTile(TileBase t)

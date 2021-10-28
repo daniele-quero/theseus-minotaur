@@ -17,9 +17,9 @@ public class CustomInput : MonoBehaviour
     public int HorizontalInput()
     {
         if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
-            return 1;
-        else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
             return -1;
+        else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+            return 1;
         else
             return 0;
     }

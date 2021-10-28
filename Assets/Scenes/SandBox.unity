@@ -216,8 +216,11 @@ GameObject:
   m_Component:
   - component: {fileID: 151923322}
   - component: {fileID: 151923321}
+  - component: {fileID: 151923324}
+  - component: {fileID: 151923323}
+  - component: {fileID: 151923325}
   m_Layer: 0
-  m_Name: Minothaurus
+  m_Name: Minotaur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,6 +292,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &151923323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151923320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a4e38001357b2489b438436665b196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &151923324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151923320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58eecd3081d9f9348a0c3577d7f40928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &151923325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151923320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebe90dd66a90064f9f17fcf307548ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &403780638
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +340,8 @@ GameObject:
   - component: {fileID: 403780639}
   - component: {fileID: 403780641}
   - component: {fileID: 403780642}
+  - component: {fileID: 403780643}
+  - component: {fileID: 403780644}
   m_Layer: 0
   m_Name: Theseus
   m_TagString: Untagged
@@ -386,7 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68fa6b1083bf0b4e838e1f11c791975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilemap: {fileID: 1162688274}
   _speed: 5
 --- !u!114 &403780642
 MonoBehaviour:
@@ -398,6 +438,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2894bd3e7fa84414eb9fa4af2c46ed4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &403780643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403780638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a4e38001357b2489b438436665b196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &403780644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403780638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebe90dd66a90064f9f17fcf307548ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &519420028
@@ -952,8 +1016,8 @@ Tilemap:
   - first: {x: 2, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 10
-      m_TileSpriteIndex: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 10
       m_TileObjectToInstantiateIndex: 65535
@@ -1045,7 +1109,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: f6374f1cbf9643e429fc930fc0d62a50, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: fd9be2c6aac01d54bbebe4b5ed6b9ff0, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7fd66b50442f40542b0eb2181b6ecbad, type: 2}
@@ -1061,20 +1125,20 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: bda916fe88f72364bae855e5325eac60, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: fb5c871ed9d6a474fb46cd25adec8153, type: 2}
-  - m_RefCount: 19
+  - m_RefCount: 18
     m_Data: {fileID: 11400000, guid: 176ddb5427a3c534d86758a52465e9e6, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 19
+  - m_RefCount: 18
     m_Data: {fileID: 21300000, guid: 3c82ad864cf831f41af8fed48663acbf, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 4c37df2d96b3a6f4d94ad1faff642020, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: ed79f42e95cba394c9a243397ca74444, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 65bc3bb3a4fb58b4ebf33beb13df780a, type: 3}
