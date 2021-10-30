@@ -21,6 +21,8 @@ public class MinotaurMovement : MonoBehaviour
         }
     }
 
+    public BoardCharacter BoardChar { get => _boardChar; set => _boardChar = value; }
+
     private void Awake()
     {
         _instance = this;

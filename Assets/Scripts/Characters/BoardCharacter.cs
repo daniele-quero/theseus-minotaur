@@ -55,5 +55,12 @@ public class BoardCharacter : MonoBehaviour
             transform.Translate((Vector3)dir * 0.01f * _speed);
             yield return _wait;
         }
+
+        if (LevelManager.Instance.isVictory())
+            Debug.Log("Victory");
+        
+        else if (LevelManager.Instance.isGameOver())
+            Debug.Log("Game Over");
+
     }
 }
