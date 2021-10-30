@@ -5,11 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Board : MonoBehaviour
 {
-
-    //TODO: make it singleton
-
     private static Board _instance;
-
     public Dictionary<TileBase, List<Vector2Int>> walls = new Dictionary<TileBase, List<Vector2Int>>();
     public List<TileBase> tiles = new List<TileBase>();
     public BoundsInt boardBounds;

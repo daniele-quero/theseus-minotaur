@@ -5,8 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class TheseusMovement : MonoBehaviour
 {
-    private Tilemap _tilemap;
-
     private Vector3Int _dir = Vector3Int.zero;
     private Vector3 _offset = new Vector3(0.5f, 0.5f, 0);
 
@@ -14,12 +12,8 @@ public class TheseusMovement : MonoBehaviour
     private WallChecker _wallChecker;
     private BoardCharacter _boardChar;
 
-    [SerializeField]
-    private float _speed;
-
     void Start()
     {
-        _tilemap = Board.Instance.GetComponent<Tilemap>();
         _input = GetComponent<CustomInput>();
         _wallChecker = GetComponent<WallChecker>();
         _boardChar = GetComponent<BoardCharacter>();
@@ -28,7 +22,13 @@ public class TheseusMovement : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (!_boardChar.IsMoving)
+        {
+            if (_input.WaitInput())
+                MinotaurTurn();
+            else
+                Move();
+        }
     }
 
     private void Move()
@@ -43,9 +43,18 @@ public class TheseusMovement : MonoBehaviour
         else
             _dir = Vector3Int.zero;
 
-        if (_wallChecker.IsMovementAllowed(_boardChar.GetCurrentTile(), _boardChar.GetTargetTile(_dir), _dir))
-            transform.position = _boardChar.GetTarget(_dir);
+        if (_dir != Vector3Int.zero 
+            && _wallChecker.IsMovementAllowed(_boardChar.GetCurrentTile(), _boardChar.GetTargetTile(_dir), _dir))
+        {
+            _boardChar.Move(_boardChar.GetTarget(_dir), _dir);
+            MinotaurTurn();
+            _boardChar.IsMoving = false;
+        }
     }
 
-    //TODO: use coroutine for a smooth movement
+    private void MinotaurTurn()
+    {
+        MinotaurMovement.Instance.Move(_boardChar.GetTargetTile(_dir));
+    }
+
 }
