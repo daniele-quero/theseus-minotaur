@@ -75,10 +75,11 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Use Arrow keys or WASD \nto Move Theseus\nor Space to skip the turn"
+  m_Text: "Move Theseus with Arrow keys or WASD \nSkip the Turn with Space\nRestart
+    the Level with R"
 --- !u!1 &4870232274218395697
 GameObject:
   m_ObjectHideFlags: 0

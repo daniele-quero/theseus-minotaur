@@ -29,6 +29,11 @@ public class TheseusMovement : MonoBehaviour
             else
                 Move();
         }
+
+        if(_input.RestartInput())
+        {
+            LevelManager.Instance.RestartLevel();
+        }
     }
 
     private void Move()

@@ -28,4 +28,9 @@ public class CustomInput : MonoBehaviour
     {
         return Input.GetKeyUp(KeyCode.Space);
     }
+
+    public bool RestartInput()
+    {
+        return Input.GetKeyUp(KeyCode.R);
+    }
 }
