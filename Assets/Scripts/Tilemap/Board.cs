@@ -49,6 +49,8 @@ public class Board : MonoBehaviour
         walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.up, Vector2Int.right });
         walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.down, Vector2Int.right });
         walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.down, Vector2Int.left });
+        walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.down, Vector2Int.up });
+        walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.right, Vector2Int.left });
 
         walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.up, Vector2Int.left, Vector2Int.down });
         walls[tiles[i++]].AddRange(new List<Vector2Int>() { Vector2Int.up, Vector2Int.left, Vector2Int.right });
