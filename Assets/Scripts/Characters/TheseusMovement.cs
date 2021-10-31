@@ -34,6 +34,10 @@ public class TheseusMovement : MonoBehaviour
         {
             LevelManager.Instance.RestartLevel();
         }
+        else if (_input.UndoInput())
+        {
+            UndoMove();
+        }
     }
 
     private void Move()
@@ -51,6 +55,7 @@ public class TheseusMovement : MonoBehaviour
         if (_dir != Vector3Int.zero 
             && _wallChecker.IsMovementAllowed(_boardChar.GetCurrentTile(), _boardChar.GetTargetTile(_dir), _dir))
         {
+            _boardChar.PreviousPosition = _boardChar.GetCurrentTile();
             _boardChar.Move(_boardChar.GetTarget(_dir), _dir);
             MinotaurTurn();
             _boardChar.IsMoving = false;
@@ -59,7 +64,14 @@ public class TheseusMovement : MonoBehaviour
 
     private void MinotaurTurn()
     {
+        MinotaurMovement.Instance.BoardChar.PreviousPosition = MinotaurMovement.Instance.BoardChar.GetCurrentTile();
         MinotaurMovement.Instance.Move(_boardChar.GetTargetTile(_dir));
+    }
+
+    private void UndoMove()
+    {
+        _boardChar.SnapIntoTile(_boardChar.PreviousPosition);
+        MinotaurMovement.Instance.BoardChar.SnapIntoTile(MinotaurMovement.Instance.BoardChar.PreviousPosition);
     }
 
 }

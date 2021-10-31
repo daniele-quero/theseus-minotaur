@@ -9,22 +9,30 @@ public class BoardCharacter : MonoBehaviour
     private Tilemap _tilemap;
     private Vector3 _offset = new Vector3(0.5f, 0.5f, 0);
     private bool _isMoving = false;
+    private Vector3Int _previousPosition;
     private WaitForSeconds _wait;
 
     [SerializeField]
     private float _speed;
 
     public bool IsMoving { get => _isMoving; set => _isMoving = value; }
+    public Vector3Int PreviousPosition { get => _previousPosition; set => _previousPosition = value; }
 
     void Start()
     {
         _tilemap = Board.Instance.GetComponent<Tilemap>();
         _wait = new WaitForSeconds(0.01f);
+        _previousPosition = GetCurrentTile();
     }
 
     public void SnapIntoTile()
     {
         transform.position = GetTarget(Vector3Int.zero);
+    }
+
+    public void SnapIntoTile(Vector3Int tile)
+    {
+        transform.position = _tilemap.CellToWorld(tile) + _offset;
     }
 
     public Vector3Int GetCurrentTile()

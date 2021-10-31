@@ -33,4 +33,9 @@ public class CustomInput : MonoBehaviour
     {
         return Input.GetKeyUp(KeyCode.R);
     }
+
+    public bool UndoInput()
+    {
+        return Input.GetKeyDown(KeyCode.U);
+    }
 }

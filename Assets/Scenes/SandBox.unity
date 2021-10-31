@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6a62f77e720464a924afe9f1b31078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _theseusChar: {fileID: 403780644}
 --- !u!1 &1030759236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1391,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4870232274040001999, guid: 60853798b53ac1649ac09c86a4945973, type: 3}
+      propertyPath: m_Text
+      value: "Move Theseus with Arrow keys or WASD \nSkip the Turn with Space\nRestart
+        the Level with R\nUndo Last Move with U"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870232274040001999, guid: 60853798b53ac1649ac09c86a4945973, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4870232274390445539, guid: 60853798b53ac1649ac09c86a4945973, type: 3}
       propertyPath: m_Name
       value: Canvas
