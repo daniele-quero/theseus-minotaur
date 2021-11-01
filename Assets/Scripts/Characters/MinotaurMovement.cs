@@ -33,7 +33,7 @@ public class MinotaurMovement : MonoBehaviour
         _wallChecker = GetComponent<WallChecker>();
         _boardChar = GetComponent<BoardCharacter>();
         _boardChar.SnapIntoTile();
-        _wait = new WaitForSeconds(0.6f);
+        _wait = new WaitForSeconds(0.5f);
     }
 
     //to be called every Theseus move
@@ -45,6 +45,7 @@ public class MinotaurMovement : MonoBehaviour
 
     private IEnumerator MoveRoutine(Vector3Int theseusTile)
     {
+        yield return _wait;
         while (_moves > 0)
         {
             Vector3Int hDir = Vector3Int.zero,
@@ -72,6 +73,8 @@ public class MinotaurMovement : MonoBehaviour
                 _moves = 0;
                 yield return _wait;
             }
+
+            _boardChar.IsMoving = false;
         }
     }
 
@@ -88,5 +91,6 @@ public class MinotaurMovement : MonoBehaviour
             vDir = Vector3Int.zero;
         else
             vDir = Vector3Int.up * (int)Mathf.Sign(r.y);
+
     }
 }

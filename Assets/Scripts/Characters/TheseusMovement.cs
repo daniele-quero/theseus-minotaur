@@ -22,15 +22,17 @@ public class TheseusMovement : MonoBehaviour
 
     void Update()
     {
-        if (!_boardChar.IsMoving)
+        if (!_boardChar.IsMoving && !MinotaurMovement.Instance.BoardChar.IsMoving)
         {
             if (_input.WaitInput())
                 MinotaurTurn();
-            else
+            else if (LevelManager.Instance.CanPlay)
                 Move();
+            else if (_input.NextLevelInput())
+                LevelManager.Instance.NextLevel();
         }
 
-        if(_input.RestartInput())
+        if (_input.RestartInput())
         {
             LevelManager.Instance.RestartLevel();
         }
@@ -42,23 +44,22 @@ public class TheseusMovement : MonoBehaviour
 
     private void Move()
     {
-        int x = _input.HorizontalInput();
-        int y = _input.VerticalInput();
+        int x = 0;
+        int y = 0;
 
-        if (x != 0)
+        if ((x = _input.HorizontalInput()) != 0)
             _dir = Vector3Int.right * x;
-        else if (y != 0)
+        else if ((y = _input.VerticalInput()) != 0)
             _dir = Vector3Int.up * y;
         else
             _dir = Vector3Int.zero;
 
-        if (_dir != Vector3Int.zero 
+        if (_dir != Vector3Int.zero
             && _wallChecker.IsMovementAllowed(_boardChar.GetCurrentTile(), _boardChar.GetTargetTile(_dir), _dir))
         {
             _boardChar.PreviousPosition = _boardChar.GetCurrentTile();
             _boardChar.Move(_boardChar.GetTarget(_dir), _dir);
             MinotaurTurn();
-            _boardChar.IsMoving = false;
         }
     }
 

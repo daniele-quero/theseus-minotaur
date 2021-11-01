@@ -38,4 +38,9 @@ public class CustomInput : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.U);
     }
+
+    public bool NextLevelInput()
+    {
+        return Input.GetKeyUp(KeyCode.Return);
+    }
 }

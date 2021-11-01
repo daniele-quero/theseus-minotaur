@@ -21,7 +21,7 @@ public class BoardCharacter : MonoBehaviour
     void Start()
     {
         _tilemap = Board.Instance.GetComponent<Tilemap>();
-        _wait = new WaitForSeconds(0.01f);
+        _wait = new WaitForSeconds(0.02f);
         _previousPosition = GetCurrentTile();
     }
 
@@ -50,25 +50,33 @@ public class BoardCharacter : MonoBehaviour
         return _tilemap.CellToWorld(GetTargetTile(dir)) + _offset;
     }
 
+    public void StopMovement()
+    {
+        _speed = 0;
+    }
+
     public void Move(Vector3 target, Vector3Int dir)
     {
         StartCoroutine(MoveCoroutine(target, dir));
     }
+
     private IEnumerator MoveCoroutine(Vector3 target, Vector3Int dir)
     {
         _isMoving = true;
-        
+     
         while(transform.position != target)
         {
-            transform.Translate((Vector3)dir * 0.01f * _speed);
+            transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
             yield return _wait;
         }
 
-        if (LevelManager.Instance.isVictory())
-            Debug.Log("Victory");
-        
-        else if (LevelManager.Instance.isGameOver())
-            Debug.Log("Game Over");
+        _isMoving = false;
+
+        if (LevelManager.Instance.IsVictory())
+            LevelManager.Instance.SetEndLevel(true);
+
+        else if (LevelManager.Instance.IsGameOver())
+            LevelManager.Instance.SetEndLevel(false);
 
     }
 }
