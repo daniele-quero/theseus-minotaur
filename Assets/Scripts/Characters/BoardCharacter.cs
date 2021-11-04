@@ -70,13 +70,15 @@ public class BoardCharacter : MonoBehaviour
             yield return _wait;
         }
 
-        _isMoving = false;
-
         if (LevelManager.Instance.IsVictory())
             LevelManager.Instance.SetEndLevel(true);
 
         else if (LevelManager.Instance.IsGameOver())
             LevelManager.Instance.SetEndLevel(false);
+
+
+        yield return new WaitForSeconds(0.15f);
+        _isMoving = false;
 
     }
 }

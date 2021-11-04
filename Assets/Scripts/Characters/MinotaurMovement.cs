@@ -45,7 +45,7 @@ public class MinotaurMovement : MonoBehaviour
 
     private IEnumerator MoveRoutine(Vector3Int theseusTile)
     {
-        yield return _wait;
+        //yield return _wait;
         while (_moves > 0)
         {
             Vector3Int hDir = Vector3Int.zero,
@@ -57,6 +57,7 @@ public class MinotaurMovement : MonoBehaviour
             if (hDir != Vector3Int.zero && _wallChecker.IsMovementAllowed(_boardChar.GetCurrentTile(), _boardChar.GetTargetTile(hDir), hDir))
             {
                 _boardChar.Move(_boardChar.GetTarget(hDir), hDir);
+                _boardChar.IsMoving = true;
                 _moves--;
                 yield return _wait;
             }
@@ -64,6 +65,7 @@ public class MinotaurMovement : MonoBehaviour
             else if (vDir != Vector3Int.zero && _wallChecker.IsMovementAllowed(_boardChar.GetCurrentTile(), _boardChar.GetTargetTile(vDir), vDir))
             {
                 _boardChar.Move(_boardChar.GetTarget(vDir), vDir);
+                _boardChar.IsMoving = true;
                 _moves--;
                 yield return _wait;
             }
